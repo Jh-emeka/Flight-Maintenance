@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
+</head>
+<body>
+<div class="Dashboard-container", align="center">
+
+    <h1>Manage Maintenance</h1>
+
+    <button><a href="/newMaintenance">New Maintenance</a></button>
+    <button><a href="/updateMaintenance">Update Maintenance</a></button>
+    <button><a href="/deleteMaintenance">Delete Maintenance</a></button>
+    <button><a href="/home">Return to Homepage</a></button>
+    <br><br>
+    <form action="{{ url_for('get_maintenance') }}" method="POST">
+
+        <label for="emp-name">Maintenance Id:</label><br>
+        <input type="text" id="emp-name" name="Id">
+        <input type="submit" value="Search Maintenance"><br><br><br>
+
+
+    </form>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</div>
+</table><br><br><br>
+<table border="1" cellpadding="5" cellspacing="5" align="center">
+    <thead>
+    <td>Maintenance Id</td>
+    <td>Aircraft Id</td>
+    <td>Start Date</td>
+    <td>Duration</td>
+    <td>Maintenance Status</td>
+    <td>Assigned Engineer</td>
+    </thead>
+    {% for row in rows %}
+    <tr>
+        {% for data in row %}
+        <td>{{ data }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+</body>
+</html>

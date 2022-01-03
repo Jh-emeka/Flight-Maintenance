@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewAdmin</title>
+</head>
+<body>
+<div class="Dashboard-container", align="center">
+
+    <h1>New Admin</h1>
+
+    <br><br>
+    <form action="{{ url_for('new_admin') }}" method="POST">
+
+
+     Username: <input type = "text" name = "username"  /><br><br>
+     Password: <input type = "password" name = "Pwd" pattern="(?=.*\d)(?=.*[\W_]).{7,}" title="Minimum of 7 characters. Should have at least one special character and one number." /><br><br>
+     Password: <input type = "password" name = "Pwd2" pattern="(?=.*\d)(?=.*[\W_]).{7,}" title="Minimum of 7 characters. Should have at least one special character and one number." /><br><br>
+     <div class="msg">{{ msg }}</div><br>
+        <input type="submit" value="Register">
+
+    </form>
+
+
+</div>
+</body>
+</html>

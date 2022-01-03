@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineer</title>
+</head>
+<body>
+
+<h1>New Engineer</h1>
+
+<form action="{{ url_for('add_engineer') }}" method="POST">
+
+
+
+    <label for="Name">Name:</label><br>
+    <input type="text" id="Name" name="Name">
+
+    <br><label for="DOB">Date of Birth:</label><br>
+    <input type="text" id="DOB" name="DOB">
+
+    <br><label for="Employment Date">Employment Date:</label><br>
+    <input type="text" id="Employment Date" name="Date">
+
+    <br><label for="Employment Type">Employment Type:</label><br>
+    <input type="text" id="Employment Type" name="Type">
+
+    <br><label for="Rate">Rate:</label><br>
+    <input type="text" id="Rate" name="Rate">
+
+
+    <br><br><input type="submit" value="Add Engineer"><br>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</form>
+</body>
+</html>

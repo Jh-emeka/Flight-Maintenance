@@ -1,0 +1,31 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airframe</title>
+
+</head>
+<body>
+
+<h1>New Airframe</h1>
+<form action="{{ url_for('add_airframe') }}" method="POST">
+
+
+
+    <label for="Aircraft Model">Aircraft Model:</label><br>
+    <input type="text" id="Aircraft Model" name="AircraftModel">
+
+    <br><label for="Flight Hours">Flight Hours:</label><br>
+    <input type="text" id="Flight Hours" name="FlightHours">
+
+    <br><label for="Scheduled Maintenance">Scheduled Maintenance:</label><br>
+    <input type="text" id="Scheduled Maintenance" name="ScheduledMaintenance">
+
+
+    <br><br><input type="submit" value="Add Airframe"><br>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</form>
+</body>
+</html>

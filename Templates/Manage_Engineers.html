@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineers</title>
+</head>
+<body>
+<div class="Dashboard-container", align="center">
+
+    <h1>Manage Engineers</h1>
+
+    <button><a href="/newEngineer">Add Engineer</a></button>
+    <button><a href="/updateEngineer">Update Engineer</a></button>
+    <button><a href="/deleteEngineer">Delete Engineer</a></button>
+    <button><a href="/home">Return to Homepage</a></button>
+    <br><br>
+    <form action="{{ url_for('get_engineers') }}" method="POST">
+
+        <label for="emp-name">Engineer name:</label><br>
+        <input type="text" id="emp-name" name="name">
+        <input type="submit" value="Search Engineer"><br><br><br>
+
+
+    </form>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</div>
+</table><br><br><br>
+<table border="1" cellpadding="5" cellspacing="5" align="center">
+    <thead>
+    <td>Name</td>
+    <td>Date of Birth</td>
+    <td>Employment Date</td>
+    <td>Employment Type</td>
+    <td>Rate</td>
+    </thead>
+    {% for row in rows %}
+    <tr>
+        {% for data in row %}
+        <td>{{ data }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+
+
+</body>
+</html>

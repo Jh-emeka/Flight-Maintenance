@@ -1,0 +1,48 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
+</head>
+<body>
+
+<h1>New Maintenance</h1>
+
+<form action="{{ url_for('add_maintenance') }}" method="POST">
+
+
+
+    <label for="Aircraft Id">Aircraft Id:</label><br>
+    <input type="text" id="Aircraft Id" name="Id">
+
+    <br><label for="Start Date">Start Date:</label><br>
+    <input type="text" id="Start Date" name="Date">
+
+    <br><label for="Duration">Duration:</label><br>
+    <input type="text" id="Duration" name="Duration">
+
+    <br><label for="Maintenance Status">Maintenance Status:</label><br>
+<!--    <input type="text" id="Maintenance Status" name="Status">-->
+    <select name="Status" id="Maintenance Status">
+      <option value="Initiated">Initiated</option>
+    </select>
+
+
+    <br><label for="Assign Engineer">Assign Engineer:</label><br>
+<!--    <input type="text" id="Assign Engineer" name="Engineer">-->
+    <select id="Assign Engineer" name="Engineer" >
+{% for row in rows %}
+    {% for data in row %}
+      <option value="{{ data }}">{{ data }}</option>
+    {% endfor %}
+{% endfor %}
+</select>
+
+
+    <br><br><input type="submit" value="Add Maintenance"><br>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance</title>
+</head>
+<body>
+
+<h1>New Maintenance</h1>
+
+<form action="{{ url_for('update_maintenance') }}" method="POST">
+
+
+    <br><label for="Maintenance Id">Maintenance Id:</label><br>
+    <input type="text" id="Maintenance Id" name="Id">
+
+    <br><label for="Maintenance Status">Maintenance Status:</label><br>
+    <select name="Status" id="Maintenance Status">
+      <option value="Initiated">Initiated</option>
+      <option value="In progress">In progress</option>
+      <option value="Concluded">Concluded</option>
+
+    </select>
+
+
+    <br><br><input type="submit" value="Update Maintenance"><br>
+
+    <br><div class="msg">{{ msg }}</div><br>
+
+</form>
+</body>
+</html>
