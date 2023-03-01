@@ -583,5 +583,5 @@ def record_checker(table, uid, value):
 
 
 if __name__ == "__main__":
-    http_server = WSGIServer(('', 3000), app)
+    http_server = WSGIServer(('127.0.0.1', 3000), app)
     http_server.serve_forever()
