@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, g
 from User import User
-
+from gevent.pywsgi import WSGIServer
 import os
 import bcrypt as bcrypt
 import sqlite3 as sqlite
@@ -583,4 +583,5 @@ def record_checker(table, uid, value):
 
 
 if __name__ == "__main__":
-    app.run()
+    http_server = WSGIServer(('', 3000), app)
+    http_server.serve_forever()
