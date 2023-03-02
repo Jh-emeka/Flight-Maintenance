@@ -2,14 +2,10 @@ from flask import Flask, render_template, request, url_for, redirect, g
 from User import User
 from gevent.pywsgi import WSGIServer
 import os
+from config import app
 import bcrypt as bcrypt
 import sqlite3 as sqlite
 from flask_login import LoginManager, login_user, login_required, logout_user
-
-app = Flask(__name__, template_folder="Templates")
-app.debug = True
-
-app.config['SECRET_KEY'] = os.urandom(12).hex()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -583,5 +579,6 @@ def record_checker(table, uid, value):
 
 
 if __name__ == "__main__":
-    http_server = WSGIServer(('0.0.0.0', 5000), app)
-    http_server.serve_forever()
+    # http_server = WSGIServer(('0.0.0.0'), app)
+    # http_server.serve_forever()
+    app.run('0.0.0.0')
