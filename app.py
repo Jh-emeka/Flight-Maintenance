@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect, g
 from User import User
-from gevent.pywsgi import WSGIServer
-import os
 from config import app
 import bcrypt as bcrypt
 import sqlite3 as sqlite
