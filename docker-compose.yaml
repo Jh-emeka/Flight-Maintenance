@@ -6,6 +6,6 @@ services:
     build: .
     command: python app.py
     volumes:
-      - ./db:/usr/src/app/db
+      - .:/usr/src/app
     ports:
       - 80:3000
