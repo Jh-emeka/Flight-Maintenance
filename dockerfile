@@ -2,11 +2,9 @@
 
 FROM python:3.9
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . /app
-
-COPY requirements.txt requirements.txt
+COPY . /usr/src/app
 
 RUN pip install --upgrade pip
 
@@ -15,4 +13,3 @@ RUN pip install -r requirements.txt
 EXPOSE 3000
 
 CMD ["python", "app.py"]
-

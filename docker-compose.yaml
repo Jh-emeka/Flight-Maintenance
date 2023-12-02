@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  flaskapp:
+    container_name: app1.0
+    build: .
+    command: python app.py
+    volumes:
+      - ./db:/usr/src/app/db
+    ports:
+      - 80:3000

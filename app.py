@@ -17,7 +17,7 @@ SESSION_COOKIE_SAMESITE = "Strict"
 
 @login_manager.user_loader
 def load_user(user_id):
-    con = sqlite.connect("ABCAIR.db")
+    con = sqlite.connect("db/abcair.db")
     curs = con.cursor()
     curs.execute("SELECT * FROM Admins WHERE Admin_Id = ?", [user_id])
     row = curs.fetchone()
@@ -57,7 +57,7 @@ def add_admin():
 @app.route('/manageAirframes')
 @login_required
 def airframes():
-    con = sqlite.connect("ABCAIR.db")
+    con = sqlite.connect("db/abcair.db")
     print("Database opened successfully")
     cur = con.cursor()
     cur.execute("SELECT * FROM Air_Frame")
@@ -68,7 +68,7 @@ def airframes():
 @app.route('/manageMaintenance')
 @login_required
 def maintenance():
-    con = sqlite.connect("ABCAIR.db")
+    con = sqlite.connect("db/abcair.db")
     print("Database opened successfully")
     cur = con.cursor()
     cur.execute("SELECT * FROM Maintenance")
@@ -79,7 +79,7 @@ def maintenance():
 @app.route('/manageEngineers')
 @login_required
 def engineers():
-    con = sqlite.connect("ABCAIR.db")
+    con = sqlite.connect("db/abcair.db")
     print("Database opened successfully")
     cur = con.cursor()
     cur.execute("SELECT * FROM Engineers")
@@ -108,7 +108,7 @@ def del_airframe():
 @app.route('/newMaintenance')
 @login_required
 def new_maintenance():
-    con = sqlite.connect("ABCAIR.db")
+    con = sqlite.connect("db/abcair.db")
     print("Database opened successfully")
     cur = con.cursor()
     cur.execute("SELECT Name FROM Engineers")
@@ -162,7 +162,7 @@ def login():
         username = request.form['username']
         user_input = request.form['password'].encode("utf-8")
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
 
             print("Database opened successfully")
             cur = con.cursor()
@@ -222,7 +222,7 @@ def new_admin():
 
         hashed = bcrypt.hashpw(admin_password.encode("utf-8"), bcrypt.gensalt())
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
 
             print("Database opened successfully")
             cur = con.cursor()
@@ -248,7 +248,7 @@ def get_airframes():
     if request.method == 'POST':
         aircraft_id = request.form['Id']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
             if not aircraft_id:
@@ -275,7 +275,7 @@ def get_maintenance():
     if request.method == 'POST':
         maintenance_id = request.form['Id']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
             if not maintenance_id:
@@ -302,7 +302,7 @@ def get_engineers():
     if request.method == 'POST':
         name = request.form['name']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
             if not name:
@@ -339,7 +339,7 @@ def add_airframe():
 
         else:
 
-            with sqlite.connect("ABCAIR.db") as con:
+            with sqlite.connect("db/abcair.db") as con:
                 print("Database opened successfully")
                 cur = con.cursor()
                 cur.execute("INSERT INTO Air_Frame(Aircraft_Model, Flight_Hours, Scheduled_Maintenance) VALUES(?,?,?)",
@@ -357,7 +357,7 @@ def update_airframe():
         aircraft_id = request.form['Id']
         scheduled_maintenance = request.form['ScheduledMaintenance']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -383,7 +383,7 @@ def delete_airframe():
     if request.method == 'POST':
         aircraft_id = request.form['Id']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -417,7 +417,7 @@ def add_maintenance():
             return render_template('Add_Maintenance.html', msg=msg)
 
         else:
-            with sqlite.connect("ABCAIR.db") as con:
+            with sqlite.connect("db/abcair.db") as con:
                 print("Database opened successfully")
                 cur = con.cursor()
                 cur.execute("INSERT INTO Maintenance(Aircraft_Id, Start_Date, Duration, Maintenance_Status, "
@@ -436,7 +436,7 @@ def update_maintenance():
         maintenance_id = request.form['Id']
         status = request.form['Status']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -463,7 +463,7 @@ def delete_maintenance():
     if request.method == 'POST':
         maintenance_id = request.form['Id']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -497,7 +497,7 @@ def add_engineer():
 
         else:
 
-            with sqlite.connect("ABCAIR.db") as con:
+            with sqlite.connect("db/abcair.db") as con:
                 print("Database opened successfully")
                 cur = con.cursor()
                 cur.execute(
@@ -518,7 +518,7 @@ def update_engineer():
         employment_type = request.form['Type']
         rate = request.form['Rate']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -544,7 +544,7 @@ def delete_engineer():
     if request.method == 'POST':
         name = request.form['Name']
 
-        with sqlite.connect("ABCAIR.db") as con:
+        with sqlite.connect("db/abcair.db") as con:
             print("Database opened successfully")
             cur = con.cursor()
 
@@ -564,7 +564,7 @@ def delete_engineer():
 
 
 def record_checker(table, uid, value):
-    with sqlite.connect("ABCAIR.db") as con:
+    with sqlite.connect("db/abcair.db") as con:
         print("check in progress......")
         cur = con.cursor()
         statement = f"SELECT * FROM {table} WHERE {uid} = '{value}'"
