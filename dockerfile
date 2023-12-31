@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9
+FROM python:3.9-alpine
 
 
 RUN sudo apt-get install build-essential libffi-dev python3-dev
