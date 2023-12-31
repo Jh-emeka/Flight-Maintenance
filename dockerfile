@@ -3,8 +3,6 @@
 FROM python:3.9-alpine
 
 
-RUN sudo apt-get install build-essential libffi-dev python3-dev
-
 WORKDIR /usr/src/app
 
 COPY . .
