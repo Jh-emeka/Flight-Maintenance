@@ -5,21 +5,9 @@ services:
     container_name: flaskapp3.0
     build:
       context: .
-    command: python app.py
     volumes:
       - db:/usr/src/app/db
     ports:
       - 80:3000
-  
-  flaskapp2:
-    container_name: flaskapp4.0
-    build:
-      context: .
-    command: python app.py
-    volumes:
-      - db:/usr/src/app/db
-    ports:
-      - 2000:3000
-
 volumes:
   db:
