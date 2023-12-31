@@ -1,12 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM debian:latest
+FROM python:3.9
 
-# Update package lists and install Python and necessary tools
 RUN apt-get update && \
     apt-get install -y \
-    python3 \
-    python3-pip \
     build-essential \
     curl \
     libffi-dev
