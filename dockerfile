@@ -3,7 +3,7 @@
 FROM python:3.9
 
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+RUN sudo apt-get install build-essential libffi-dev python3-dev
 
 WORKDIR /usr/src/app
 
