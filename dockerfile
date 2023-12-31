@@ -1,17 +1,18 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9
+FROM debian:latest
 
-# Install Rust compiler (Rustup)
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
-# Set environment variables for Rust
-ENV PATH="/root/.cargo/bin:${PATH}"
-ENV USER=root
-
-# Install necessary development tools (e.g., build-essential, libffi-dev)
+# Update package lists and install Python and necessary tools
 RUN apt-get update && \
-    apt-get install -y build-essential libffi-dev
+    apt-get install -y \
+    python3 \
+    python3-pip \
+    build-essential \
+    curl \
+    libffi-dev
+
+# Install Rust compiler (from Debian repositories)
+RUN apt-get install -y rustc cargo
 
 WORKDIR /usr/src/app
 
