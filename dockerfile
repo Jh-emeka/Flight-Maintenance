@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9-alpine
+FROM python:3.9
 
 # Install Rust compiler (Rustup)
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Set environment variables for Rust
 ENV PATH="/root/.cargo/bin:${PATH}"
