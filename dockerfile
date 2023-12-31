@@ -2,6 +2,9 @@
 
 FROM python:3.9
 
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 WORKDIR /usr/src/app
 
 COPY . .
